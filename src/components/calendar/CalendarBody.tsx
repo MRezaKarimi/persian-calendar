@@ -17,6 +17,7 @@ export default function CalendarBody() {
 
       {days.map((dayObj) => (
         <CalendarCell
+          key={`${dayObj.day}${dayObj.month}`}
           day={dayObj.day}
           isGray={dayObj.month !== month}
           active={dayObj.isEqual(today)}
