@@ -20,6 +20,7 @@ export default function CalendarBody() {
           day={dayObj.day}
           isGray={dayObj.month !== month}
           active={dayObj.isEqual(today)}
+          holiday={dayObj.isHoliday}
         />
       ))}
     </div>
