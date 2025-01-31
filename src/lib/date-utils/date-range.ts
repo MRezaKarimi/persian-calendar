@@ -18,9 +18,7 @@ export function getDateRange(year: number, month: number): CustomDate[] {
   const currentDate = moment(startRangeDate);
 
   while (currentDate <= endRangeDate) {
-    dateRange.push(
-      new CustomDate(currentDate.jYear(), currentDate.jMonth() + 1, currentDate.jDate())
-    );
+    dateRange.push(new CustomDate(currentDate));
     currentDate.add(1, "day");
   }
 

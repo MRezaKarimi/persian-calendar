@@ -1,12 +1,17 @@
 import moment from "moment-jalaali";
 
 export class CustomDate {
-  constructor(
-    public year: number,
-    public month: number,
-    public day: number,
-    public isHoliday = false
-  ) {}
+  year: number;
+  month: number;
+  day: number;
+  isHoliday = false;
+
+  constructor(moment: moment.Moment, isHoliday?: boolean) {
+    this.year = moment.jYear();
+    this.month = moment.jMonth() + 1;
+    this.day = moment.jDate();
+    this.isHoliday = isHoliday ?? moment.weekday() === 6;
+  }
 
   toString() {
     return `${this.year} ${this.month} ${this.day}`;
