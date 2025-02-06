@@ -1,0 +1,54 @@
+name: Build and pack extension
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+    
+      - name: Install web-ext globally
+        run: npm install -g web-ext
+    
+      - name: Install Chrome v130
+        run: |
+          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get -f install -y
+    
+      - name: Build project
+        run: npm run build
+    
+      - name: Decode and restore key.pem
+        run: echo "${{ secrets.CHROME_EXTENSION_KEY }}" | base64 -d > key.pem
+    
+      - name: Pack Firefox extension
+        run: web-ext build --source-dir dist/ --artifacts-dir ./build/ --filename persian-calendar.xpi --overwrite-dest
+    
+      - name: Pack Chrome extension
+        run: google-chrome --pack-extension=./dist --pack-extension-key=./key.pem
+    
+      - name: Move Chrome extension to build folder
+        run: mv ./dist.crx ./build/persian-calendar.crx
+    
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            build/persian-calendar.xpi
+            build/persian-calendar.crx
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
