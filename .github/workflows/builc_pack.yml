@@ -1,9 +1,6 @@
 name: Build and pack extension
 
-on:
-  push:
-    tags:
-      - '*'
+on: workflow_dispatch
 
 jobs:
   build:
