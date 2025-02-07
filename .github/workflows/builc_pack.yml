@@ -9,6 +9,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Ensures all tags are fetched
+
+      - name: Get latest tag
+        id: get_tag
+        run: echo "TAG_NAME=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -44,6 +50,7 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ env.TAG_NAME }}  # Use the dynamically fetched tag
           files: |
             build/persian-calendar.xpi
             build/persian-calendar.crx
