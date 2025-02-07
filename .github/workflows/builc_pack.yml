@@ -1,6 +1,13 @@
 name: Build and pack extension
 
-on: workflow_dispatch
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Ensures the token can create releases
 
 jobs:
   build:
