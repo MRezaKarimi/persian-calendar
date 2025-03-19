@@ -1,4 +1,5 @@
 import Calendar from "./components/calendar/Calendar";
+import EventList from "./components/events/EventList";
 import { DateProvider } from "./providers/DateProvider";
 import { EventsProvider } from "./providers/EventsProvider";
 
@@ -8,6 +9,7 @@ function App() {
       <DateProvider>
         <EventsProvider>
           <Calendar />
+          <EventList />
         </EventsProvider>
       </DateProvider>
     </div>
