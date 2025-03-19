@@ -4,7 +4,7 @@ import { EventsProvider } from "./providers/EventsProvider";
 
 function App() {
   return (
-    <div className="flex w-fit">
+    <div className="flex w-fit h-96">
       <DateProvider>
         <EventsProvider>
           <Calendar />
