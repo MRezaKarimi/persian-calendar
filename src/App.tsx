@@ -1,5 +1,5 @@
 import Calendar from "./components/calendar/Calendar";
-import { DateProvider } from "./components/DateProvider";
+import { DateProvider } from "./providers/DateProvider";
 
 function App() {
   return (
