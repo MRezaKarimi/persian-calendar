@@ -50,8 +50,24 @@ Note: The built extension can be loaded as an unpacked extension in your browser
 
 ## Installation
 
-1. Download from your browser's extension/addon store
-2. Pin the extension to the toolbar
+### Microsoft Edge
+
+The extension is available on the Microsoft Edge Add-ons store. Install it from [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/persian-calendar/kojcphmdolepklegkdendjhifeablabj).
+
+### Firefox
+
+The extension is available on Firefox Add-ons. Install it from [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/persian-jalali-calendar).
+
+### Google Chrome
+
+Currently not available on the Chrome Web Store. To install manually:
+
+1. Download the latest release from [GitHub Releases](https://github.com/MRezaKarimi/persian-calendar/releases/)
+2. Extract the downloaded ZIP file
+3. Open Chrome and go to `chrome://extensions`
+4. Enable "Developer mode" using the toggle in the top-right
+5. Click "Load unpacked" and select the extracted directory
+6. The extension should now appear in your Chrome toolbar
 
 ## Contributing
 
