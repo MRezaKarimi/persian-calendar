@@ -1,14 +1,15 @@
 import { useContext } from "react";
 import { DateContext } from "../../contexts/DateContext";
 import { getMonthName } from "../../lib/date-utils/month-name";
+import YearSelector from "./YearSelector";
 
 export default function CalendarTitle() {
+  const { month } = useContext(DateContext);
+
   return (
-    <div className="text-base">
-      <span className="text-sky-800 font-medium pe-2">
-        {getMonthName(useContext(DateContext).month)}
-      </span>
-      <span className="text-gray-500 font-medium">{useContext(DateContext).year}</span>
+    <div className="flex justify-center text-base">
+      <span className="text-sky-800 font-medium">{getMonthName(month)}</span>
+      <YearSelector />
     </div>
   );
 }
