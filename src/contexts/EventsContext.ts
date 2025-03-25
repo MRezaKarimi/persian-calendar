@@ -21,6 +21,7 @@ export type Event = {
   object_name: string;
 };
 
-export const EventsContext = createContext<{ events: Event[] }>({
+export const EventsContext = createContext<{ events: Event[]; holidays: Set<string> }>({
   events: [],
+  holidays: new Set(),
 });

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { EventsContext, type Event } from "../contexts/EventsContext";
 import { DateContext } from "../contexts/DateContext";
 
@@ -35,5 +35,23 @@ export function EventsProvider({ children }: { children: React.ReactNode }) {
     fetchEvents();
   }, [month, year]);
 
-  return <EventsContext.Provider value={{ events }}>{children}</EventsContext.Provider>;
+  const holidays = useMemo(() => {
+    // Use set to check holidays for better performance
+    const holidays = new Set<string>([]);
+
+    // Add all holiday events
+    events.forEach((event) => {
+      if (event.is_holiday) {
+        holidays.add(`${event.jalali_year}-${event.jalali_month}-${event.jalali_day}`);
+      }
+    });
+
+    return holidays;
+  }, [events]);
+
+  return (
+    <EventsContext.Provider value={{ events, holidays }}>
+      {children}
+    </EventsContext.Provider>
+  );
 }
