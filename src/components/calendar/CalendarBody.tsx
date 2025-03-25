@@ -2,6 +2,7 @@ import { useContext, useMemo } from "react";
 import CalendarCell from "./CalendarCell";
 import CalendarWeekDays from "./CalendarWeekDays";
 import { DateContext } from "../../contexts/DateContext";
+import { EventsContext } from "../../contexts/EventsContext";
 import { getDateRange } from "../../lib/date-utils/date-range";
 import moment from "moment-jalaali";
 
@@ -9,6 +10,8 @@ const today = moment();
 
 export default function CalendarBody() {
   const { month, year } = useContext(DateContext);
+  const { holidays } = useContext(EventsContext);
+
   const days = useMemo(() => getDateRange(year, month), [year, month]);
 
   return (
@@ -21,7 +24,10 @@ export default function CalendarBody() {
           day={dayObj.day}
           isGray={dayObj.month !== month}
           active={dayObj.isEqual(today)}
-          holiday={dayObj.isHoliday}
+          holiday={
+            dayObj.isFriday ||
+            holidays.has(`${dayObj.year}-${dayObj.month}-${dayObj.day}`)
+          }
         />
       ))}
     </div>
