@@ -4,13 +4,13 @@ export class CustomDate {
   year: number;
   month: number;
   day: number;
-  isHoliday = false;
+  isFriday: boolean;
 
-  constructor(moment: moment.Moment, isHoliday?: boolean) {
+  constructor(moment: moment.Moment) {
     this.year = moment.jYear();
     this.month = moment.jMonth() + 1;
     this.day = moment.jDate();
-    this.isHoliday = isHoliday ?? moment.weekday() === 6;
+    this.isFriday = moment.weekday() === 6;
   }
 
   toString() {
