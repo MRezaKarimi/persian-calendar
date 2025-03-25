@@ -1,8 +1,20 @@
-export default function EventItem() {
+import { type Event } from "../../contexts/EventsContext";
+
+export default function EventItem({ event }: { event: Event }) {
   return (
-    <div className="w-max py-2">
-      <span className="text-red-600 pe-1 font-medium">1 اردیبهشت&nbsp;</span>
-      <span className="text-gray-600">شهادت رسول اکرم و روز جوان</span>
+    <div className="flex py-1 px-2 mb-1.5 text-sm">
+      <span
+        className={`font-medium me-2 ${
+          event.is_holiday ? "text-red-600" : "text-gray-600"
+        }`}
+      >
+        {event.jalali_day}&nbsp;
+      </span>
+      <span
+        className={`${event.is_holiday ? "font-medium text-red-600" : "text-gray-500"}`}
+      >
+        {event.title}
+      </span>
     </div>
   );
 }
