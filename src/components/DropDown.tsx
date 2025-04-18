@@ -49,7 +49,7 @@ const DropDown: React.FC<DropDownProps> = ({
       {isOpen && (
         <div className="absolute z-10 w-max rounded-lg bg-white shadow-lg">
           <ul
-            className="py-1 text-sm text-center text-gray-700"
+            className="py-1 text-sm text-center text-gray-700 grid grid-cols-3"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"
