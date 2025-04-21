@@ -66,7 +66,7 @@ Currently not available on the Chrome Web Store. To install manually:
 2. Extract the downloaded ZIP file
 3. Open Chrome and go to `chrome://extensions`
 4. Enable "Developer mode" using the toggle in the top-right
-5. Click "Load unpacked" and select the extracted directory
+5. Click "Load unpacked" and select the `dist` folder from extracted zip file
 6. The extension should now appear in your Chrome toolbar
 
 ## Contributing
