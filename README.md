@@ -1,3 +1,5 @@
+![image](/imgs/banner.png)
+
 # Persian/Jalali/Shamsi calendar extension for web browsers
 
 ## Overview
